@@ -1,0 +1,6 @@
+Git workflow (branching):
+1) FETCH from origin repository
+2) Reseting local master to new origin master (Hard Reset?)
+3) REBASE Task branch to new local master
+4) MERGE Task to new local master
+5) PUSH to origin repository (if error - start from point 1 again)
