@@ -1,6 +1,7 @@
 0    [main] INFO  com.alliedtesting.etelenkov.myapp.App  - Hello World (File Appender)
 0    [main] INFO  com.alliedtesting.etelenkov.myapp.App  - Hello World (File Appender)
 01 - changes for git testing (branch test_task_1)
-02 - changes for git testing (branch test_task_1)
+02 - changes for git testing (branch test_task_1) _something else to 2nd
+03 - changes for git testing (branch test_task_1)
 04 - changes for git testing (branch test_task_2)
 05 - changes for git testing (branch test_task_2)
