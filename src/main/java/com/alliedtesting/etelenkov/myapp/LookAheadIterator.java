@@ -14,7 +14,7 @@ import java.util.Iterator;
  *
  * @param <E> Type of elements of initial & consequently - wrapper elements.
  */
-class LookAheadIterator<E> implements Iterator<E> {
+public class LookAheadIterator<E> implements Iterator<E> {
     private final Iterator<E> initial;
     private E next = null; // peeked element
     private boolean peeked = false; // peeked flag

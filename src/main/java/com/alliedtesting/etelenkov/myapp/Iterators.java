@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-class Iterators {
+public class Iterators {
 
     /**
      * Function returns a new iterator which consist of all of the elements
@@ -52,15 +52,44 @@ class Iterators {
         };
     }
 
+    /**
+     * Returns non-parallel Stream made of source Iterator by using overloaded
+     * method {@code toStream}.
+     *
+     * @param sourceIterator Source Iterator to convert to stream.
+     * @param <E> Type parameter of elements of source Iterator.
+     * @return Returns non-parallel Stream made of source Iterator.
+     */
     static <E> Stream<E> toStream(Iterator<E> sourceIterator) {
         return toStream(sourceIterator, false);
+
     }
 
+    /**
+     * Returns Stream made of source Iterator. Stream may be parallel or not,
+     * depending on parallel parameter.
+     *
+     * @param sourceIterator Source Iterator to convert to stream.
+     * @param parallel if {@code true} then the returned stream is a parallel
+     *        stream; if {@code false} the returned stream is a sequential
+     *        stream.
+     * @param <E> Type parameter of elements of source Iterator.
+     * @return Returns Stream made of source Iterator. Stream may be parallel or not,
+     * depending on parallel parameter.
+     */
     static <E> Stream<E> toStream(Iterator<E> sourceIterator, boolean parallel) {
         Iterable<E> iterable = () -> sourceIterator;
         return StreamSupport.stream(iterable.spliterator(), parallel);
     }
 
+    /**
+     * Returns List of elements of source Iterator by first converting the iterator
+     * to stream and then collection it to the returning List.
+     *
+     * @param sourceIterator Source Iterator to convert to List.
+     * @param <E> Type parameter of elements of source Iterator.
+     * @return List of elements of source Iterator.
+     */
     static <E> List<E> toList(Iterator<E> sourceIterator) {
         return toStream(sourceIterator).collect(Collectors.toList());
     }
