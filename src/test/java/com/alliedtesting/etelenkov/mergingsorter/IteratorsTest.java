@@ -1,4 +1,4 @@
-package com.alliedtesting.etelenkov.myapp;
+package com.alliedtesting.etelenkov.mergingsorter;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-import static com.alliedtesting.etelenkov.myapp.Iterators.sortingCombiner;
+import static com.alliedtesting.etelenkov.mergingsorter.Iterators.sortingCombiner;
 import static org.testng.Assert.assertEquals;
 
 public class IteratorsTest {

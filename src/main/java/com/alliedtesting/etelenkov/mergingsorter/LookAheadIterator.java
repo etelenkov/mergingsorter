@@ -1,4 +1,4 @@
-package com.alliedtesting.etelenkov.myapp;
+package com.alliedtesting.etelenkov.mergingsorter;
 
 import java.util.Iterator;
 

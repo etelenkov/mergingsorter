@@ -1,4 +1,4 @@
-package com.alliedtesting.etelenkov.myapp;
+package com.alliedtesting.etelenkov.mergingsorter;
 
 import com.beust.jcommander.IStringConverter;
 import com.beust.jcommander.Parameter;
