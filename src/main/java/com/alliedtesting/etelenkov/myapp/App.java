@@ -14,7 +14,7 @@ public class App {
 //        logger.info("Hello World");
 //        System.out.println("Hello World!");
 
-        String[] argv = {"-i", "A.txt", "B.txt", "C.txt", "-r ", "-o", "Z.txt"};
+        String[] argv = {"-i", "A.txt", "B.txt", "C.txt", "-r", "-o", "Z.txt", "-v", "Integer"};
         JCommanderParameters jcp = new JCommanderParameters();
         JCommander jc = new JCommander(jcp, argv);
 

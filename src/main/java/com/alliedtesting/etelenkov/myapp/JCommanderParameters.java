@@ -1,9 +1,7 @@
 package com.alliedtesting.etelenkov.myapp;
 
-import com.beust.jcommander.IParameterValidator;
 import com.beust.jcommander.IStringConverter;
 import com.beust.jcommander.Parameter;
-import com.beust.jcommander.ParameterException;
 import com.beust.jcommander.converters.FileConverter;
 
 import java.io.File;
@@ -54,15 +52,6 @@ class JCommanderParameters {
     @Parameter(names = {"-r", "--rewrite"},
             description = "Rewrite existing output (resulting) file")
     boolean pRewriteOutputFile = false;
-
-    // Validator for Type of sorting values
-    private class TypeOfSortingValidator implements IParameterValidator {
-        public void validate(String name, String value) throws ParameterException {
-            if (!(value.equals("Integer") || value.equals("String")))
-                throw new ParameterException("Parameter " + name +
-                        " should be [Integer] or [String] !");
-        }
-    }
 
     /*// Validator for Files (should exist and be not a directory
     private class FilesValidator implements IParameterValidator {
