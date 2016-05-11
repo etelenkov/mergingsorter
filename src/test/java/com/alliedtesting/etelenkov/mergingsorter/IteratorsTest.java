@@ -20,35 +20,49 @@ public class IteratorsTest {
      * @param listOfIncSeq List of lists of incoming sequences of elements of type <T>
      *                     sorted with comparator rules.
      * @param testNo       Test number from DataProvider (just for convenient usage)
-     * @param Exc          Expected Exception type which is a result of sortingCombiner call
+     * @param exception    Expected Exception type which is a result of sortingCombiner call
      *                     (null - if no exception expected)
      * @param <T>          Type of elements of sequence.
      */
     @Test(dataProvider = "sortingCombinerTestDataProvider")
-    public <T> void sortingCombinerTest(Comparator<? super T> comparator, List<T> expSeq, List<List<T>> listOfIncSeq, int testNo, Exception Exc) {
+    public <T> void sortingCombinerTest(Comparator<? super T> comparator, List<T> expSeq, List<List<T>> listOfIncSeq, int testNo, Class<Exception> exception) {
         // Create collection of iterators for sortingCombiner method
         List<Iterator<T>> arrOfSeqIterators = new ArrayList<>();
         for (List<T> e : listOfIncSeq) arrOfSeqIterators.add(e.iterator());
 
-        // Get resulting iterator
-        List<T> res = null;
 
-//        // Try to catch needed Exception
+        List<T> res = null; // Get resulting iterator
+
+        // Try to catch needed Exception
+        Exception catchedException = null;
+        try {
+            res = Iterators.toList(sortingCombiner(arrOfSeqIterators, comparator));
+        } catch (Exception e) {
+            catchedException = e;
+        }
+
+
 //        try {
-        res = Iterators.toList(sortingCombiner(arrOfSeqIterators, comparator));
+
 //        } catch (Exception e) {
 //
 //            // If some Exception catched - assert it with the needed one
-//            assertEquals((Object) e.getClass(), (Object) Exc.getClass(), "Iterators.sortingCombinerTest #" + testNo + " FAILED!");
+//            assertEquals((Object) e.getClass(), (Object) exc.getClass(), "Iterators.sortingCombinerTest #" + testNo + " FAILED!");
 //
 //            // Print stack trace if Exception is not the one expected
-//            if (!e.getClass().equals(Exc.getClass())) e.printStackTrace();
+//            if (!e.getClass().equals(exc.getClass())) e.printStackTrace();
 //
 //            return; // !terminate
 //        }
 
-        // Check the result with expect
-        assertEquals((Object) res, (Object) expSeq, "Iterators.sortingCombinerTest #" + testNo + " FAILED!");
+        if (exception != null) {
+            // TODO: 11.05.2016 Check Exception catched by class... 
+            assertEquals((Object) catchedException, (Object) exception,
+                    "Iterators.sortingCombinerTest #" + testNo + " FAILED on Exception expected test!");
+        } else {
+            // Check the result with expect
+            assertEquals((Object) res, (Object) expSeq, "Iterators.sortingCombinerTest #" + testNo + " FAILED!");
+        }
     }
 
     /**
@@ -115,17 +129,17 @@ public class IteratorsTest {
                         ++testNo,
                         null
                 },
-//                { // --- Integer 4 (with String - ClassCastException should be thrown) ---
-//                        (Comparator<Integer>) (a, b) -> a - b,
-//                        Arrays.asList(0, 0, 0, 1, 2, 3, 3, 4, 5, 6, 9, 10, 12, 15),
-//                        Arrays.asList(
-//                                Arrays.asList(0, 1, 2, 3, 4),
-//                                Arrays.asList("0", "3", "6", "9", "12", "15"),
-//                                Arrays.asList(0, 5, 10)
-//                        ),
-//                        ++testNo,
-//                        new ClassCastException()
-//                },
+                { // --- Integer 4 (with String - ClassCastException should be thrown) ---
+                        (Comparator<Integer>) (a, b) -> a - b,
+                        Arrays.asList(0, 0, 0, 1, 2, 3, 3, 4, 5, 6, 9, 10, 12, 15),
+                        Arrays.asList(
+                                Arrays.asList(0, 1, 2, 3, 4),
+                                Arrays.asList("0", "3", "6", "9", "12", "15"),
+                                Arrays.asList(0, 5, 10)
+                        ),
+                        ++testNo,
+                        new ClassCastException()
+                },
                 { // --- String 1-1 ---
                         (Comparator<String>) String::compareTo,
                         Arrays.asList("A", "B", "B", "C", "F", "Q", "S", "V", "W", "X", "Y", "Z"),
