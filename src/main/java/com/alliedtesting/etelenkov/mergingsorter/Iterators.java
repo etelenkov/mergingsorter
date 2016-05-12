@@ -1,4 +1,4 @@
-package com.alliedtesting.etelenkov.myapp;
+package com.alliedtesting.etelenkov.mergingsorter;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -57,7 +57,7 @@ public class Iterators {
      * method {@code toStream}.
      *
      * @param sourceIterator Source Iterator to convert to stream.
-     * @param <E> Type parameter of elements of source Iterator.
+     * @param <E>            Type parameter of elements of source Iterator.
      * @return Returns non-parallel Stream made of source Iterator.
      */
     static <E> Stream<E> toStream(Iterator<E> sourceIterator) {
@@ -70,10 +70,10 @@ public class Iterators {
      * depending on parallel parameter.
      *
      * @param sourceIterator Source Iterator to convert to stream.
-     * @param parallel if {@code true} then the returned stream is a parallel
-     *        stream; if {@code false} the returned stream is a sequential
-     *        stream.
-     * @param <E> Type parameter of elements of source Iterator.
+     * @param parallel       if {@code true} then the returned stream is a parallel
+     *                       stream; if {@code false} the returned stream is a sequential
+     *                       stream.
+     * @param <E>            Type parameter of elements of source Iterator.
      * @return Returns Stream made of source Iterator. Stream may be parallel or not,
      * depending on parallel parameter.
      */
@@ -87,7 +87,7 @@ public class Iterators {
      * to stream and then collection it to the returning List.
      *
      * @param sourceIterator Source Iterator to convert to List.
-     * @param <E> Type parameter of elements of source Iterator.
+     * @param <E>            Type parameter of elements of source Iterator.
      * @return List of elements of source Iterator.
      */
     static <E> List<E> toList(Iterator<E> sourceIterator) {
