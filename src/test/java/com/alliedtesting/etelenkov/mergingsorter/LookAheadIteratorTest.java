@@ -25,10 +25,12 @@ public class LookAheadIteratorTest {
                             list.indexOf(e) + "] and value [" + e + "]");
 
             // Assert peek() (has to be equal to List's element
-            assertEquals((Object) it.peek(), (Object) e,
-                    "LookAheadIterator.peek() FAILED on test # [" + testNo +
-                            " for element with index [" +
-                            list.indexOf(e) + "] and value [" + e + "]");
+            String msg = "LookAheadIterator.peek() FAILED on test # [" + testNo +
+                    " for element with index [" +
+                    list.indexOf(e) + "] and value [" + e + "]";
+            assertEquals((Object) it.peek(), (Object) e, msg);
+            assertEquals((Object) it.peek(), (Object) e, msg);
+            assertEquals((Object) it.peek(), (Object) e, msg);
 
             // Assert next() (has to be equal to List's element
             assertEquals((Object) it.next(), (Object) e,
